@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import './App.css';
 import {Settings} from './components/Settings/Settings';
 import {Display} from './components/Display/Display';
@@ -6,73 +6,67 @@ import {restoresState, savesState} from "./functions/localStorage/localStorage";
 
 type AppPropsType = {}
 type StateLocalStorageType = {
-    startValue: string
-    maxValue: string
+    startValue: number
+    maxValue: number
 }
 
 function App(props: AppPropsType) {
 
-    const stateLocalStorage = restoresState<StateLocalStorageType>("counter-settings", {startValue: "0", maxValue: "5"});
+    const stateLocalStorage = restoresState<StateLocalStorageType>("counter-settings", {startValue: 0, maxValue: 5});
 
     let [error, setError] = useState<boolean>(false);
 
-    let [startValue, setStartValue] = useState<string>(stateLocalStorage.startValue);
-    const startValueHandler = (value: string) => {
+    let [startValue, setStartValue] = useState<number>(stateLocalStorage.startValue);
+    const startValueHandler = (value: number) => {
         setStartValue(value);
-
-        if ((parseInt(value) < 0) || (parseInt(value) === parseInt(maxValue))) {
-            setIncrementValue("Incorrect value!");
-            setError(true);
-        }
-        else {
-            setIncrementValue("enter values and press 'set'");
-            setError(false);
-        }
     };
 
-    let [maxValue, setMaxValue] = useState<string>(stateLocalStorage.maxValue);
-    const maxValueHandler = (value: string) => {
-        setMaxValue(value);
-
-        if (parseInt(value) === parseInt(startValue)) {
-            setIncrementValue("Incorrect value!");
-            setError(true);
-        }
-        else {
-            setIncrementValue("enter values and press 'set'");
-            setError(false);
-        }
+    let [maxValue, setMaxValue] = useState<number>(stateLocalStorage.maxValue);
+    const maxValueHandler = (maxValue: number) => {
+        setMaxValue(maxValue);
     };
 
-    const saveSettings = (startValue: string, maxValue: string) => savesState<StateLocalStorageType>("counter-settings", {startValue: startValue, maxValue: maxValue});
+    const saveSettings = (startValue: number, maxValue: number) => savesState<StateLocalStorageType>("counter-settings", {startValue: startValue, maxValue: maxValue});
 
-    let [incrementValue, setIncrementValue] = useState<string>(startValue);
+    let [displayValue, setDisplayValue] = useState<string>(startValue.toString());
     const setIncrementValueUp = () => {
         let valueUp;
 
-        if (parseInt(incrementValue) + 1 === parseInt(maxValue)) {
+        if (parseInt(displayValue) + 1 === maxValue) {
             setError(true);
         }
 
-        if (isNaN(parseInt(incrementValue))) {
+        if (isNaN(parseInt(displayValue))) {
             valueUp = startValue;
         }
         else {
-            valueUp = parseInt(incrementValue);
+            valueUp = parseInt(displayValue);
             ++valueUp;
         }
 
-        setIncrementValue(valueUp.toString())
+        setDisplayValue(valueUp.toString())
     };
     const setIncrementDefault = () => {
         setError(false);
-        setIncrementValue(startValue);
+        setDisplayValue(startValue.toString());
+    };
+
+    const checkError = (startValue: number, maxValue: number) => {
+        if ( startValue < 0 || startValue >= maxValue) {
+            setDisplayValue("Incorrect value!");
+            setError(true);
+        }
+        else {
+            setDisplayValue("enter values and press 'set'");
+            setError(false);
+        }
     };
 
     return (
         <div className="App">
             <div className="App-wrapper">
                 <Settings
+                    checkError={checkError}
                     saveSettings={saveSettings}
                     maxValueHandler={maxValueHandler}
                     maxValue={maxValue}
@@ -85,7 +79,7 @@ function App(props: AppPropsType) {
                 <Display
                     setIncrementDefault={setIncrementDefault}
                     setIncrementValueUp={setIncrementValueUp}
-                    incrementValue={incrementValue}
+                    incrementValue={displayValue}
                     error={error}/>
             </div>
         </div>

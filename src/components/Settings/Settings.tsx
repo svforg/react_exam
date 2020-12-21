@@ -1,18 +1,20 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import CustomButton from "./../CustomButton/CustomButton";
 import CustomInput from "./../CustomInput/CustomInput";
 
 type SettingsPropsType = {
-    saveSettings: (startValue: string, maxValue: string) => void
-    maxValueHandler: (value: string) => void
-    maxValue: string
-    startValueHandler: (value: string) => void
-    startValue: string
+    saveSettings: (startValue: number, maxValue: number) => void
+    checkError: (startValue: number, maxValue: number) => void
+    maxValueHandler: (maxValue: number) => void
+    maxValue: number
+    startValueHandler: (startValue: number) => void
+    startValue: number
     error: boolean
 }
 
 export const Settings: React.FC<SettingsPropsType> = (
     {
+        checkError,
         saveSettings,
         maxValueHandler,
         maxValue,
@@ -22,17 +24,26 @@ export const Settings: React.FC<SettingsPropsType> = (
     }
 ) => {
 
+    const maxValueCallback = (event: ChangeEvent<HTMLInputElement>) => {
+        maxValueHandler(event.currentTarget.valueAsNumber);
+        checkError(startValue, event.currentTarget.valueAsNumber);
+    };
+    const startValueCallback = (event: ChangeEvent<HTMLInputElement>) => {
+        startValueHandler(event.currentTarget.valueAsNumber);
+        checkError(event.currentTarget.valueAsNumber, maxValue);
+    };
+
     return (
         <>
             <div className="App-inner App-settings">
                 <CustomInput
-                    onChangeText={maxValueHandler}
+                    onChange={maxValueCallback}
                     labelTitle="max value"
                     type="number"
                     value={maxValue}/>
 
                 <CustomInput
-                    onChangeText={startValueHandler}
+                    onChange={startValueCallback}
                     labelTitle="start value"
                     type="number"
                     value={startValue}/>
