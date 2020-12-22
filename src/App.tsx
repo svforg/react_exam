@@ -1,5 +1,5 @@
-import React, {ChangeEvent, useState} from 'react';
-import './App.css';
+import React, {useState} from 'react';
+import css from './App.module.scss';
 import {Settings} from './components/Settings/Settings';
 import {Display} from './components/Display/Display';
 import {restoresState, savesState} from "./functions/localStorage/localStorage";
@@ -63,8 +63,8 @@ function App(props: AppPropsType) {
     };
 
     return (
-        <div className="App">
-            <div className="App-wrapper">
+        <div className={css.App}>
+            <div className={css.AppWrapper}>
                 <Settings
                     checkError={checkError}
                     saveSettings={saveSettings}
@@ -75,7 +75,7 @@ function App(props: AppPropsType) {
                     error={error}/>
             </div>
 
-            <div className="App-wrapper">
+            <div className={css.AppWrapper}>
                 <Display
                     setIncrementDefault={setIncrementDefault}
                     setIncrementValueUp={setIncrementValueUp}

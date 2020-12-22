@@ -1,0 +1,9 @@
+@import "./../../index.global.scss";
+.button {
+    width: 100%;
+    margin-right: $size16px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}

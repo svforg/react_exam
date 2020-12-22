@@ -1,6 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import CustomButton from "./../CustomButton/CustomButton";
 import CustomInput from "./../CustomInput/CustomInput";
+import css from "./Settings.module.scss";
 
 type SettingsPropsType = {
     saveSettings: (startValue: number, maxValue: number) => void
@@ -35,7 +36,7 @@ export const Settings: React.FC<SettingsPropsType> = (
 
     return (
         <>
-            <div className="App-inner App-settings">
+            <div className={css.AppSettings}>
                 <CustomInput
                     onChange={maxValueCallback}
                     labelTitle="max value"
@@ -49,7 +50,7 @@ export const Settings: React.FC<SettingsPropsType> = (
                     value={startValue}/>
             </div>
 
-            <div className="App-input">
+            <div className={css.AppInput}>
                 <CustomButton
                     disabled={error}
                     onClick={() => saveSettings(startValue, maxValue)}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import css from "./Output.module.css";
+import css from "./Output.module.scss";
 
 type OutputPropsType = {
     error?: boolean

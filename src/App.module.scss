@@ -1,0 +1,43 @@
+@import "./index.global.scss";
+
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: $colorDarkPrimary;
+}
+
+.AppWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 400px;
+  margin: 0 auto;
+  padding: $size16px;
+  border: 2px solid $colorBluePrimary;
+  border-radius: 5px;
+}
+
+.AppInput {
+  display: flex;
+  width: 100%;
+  padding: $size16px;
+  border: 2px solid $colorBluePrimary;
+  border-radius: 5px;
+}
+
+.AppInner {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 240px;
+  margin-bottom: $size16px;
+  padding: $size16px;
+  color: $colorBluePrimary;
+  font-weight: bold;
+  font-size: $size24px;
+  border: 2px solid $colorBluePrimary;
+  border-radius: 5px;
+}

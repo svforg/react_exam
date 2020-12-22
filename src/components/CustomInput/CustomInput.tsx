@@ -1,5 +1,5 @@
-import React, {ButtonHTMLAttributes, DetailedHTMLProps, ChangeEvent, KeyboardEvent, InputHTMLAttributes} from 'react';
-import css from "./CustomInput.module.css";
+import React, {DetailedHTMLProps, ChangeEvent, KeyboardEvent, InputHTMLAttributes} from 'react';
+import css from "./CustomInput.module.scss";
 
 
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
@@ -39,7 +39,7 @@ const CustomInput: React.FC<SuperInputTextPropsType> = (
         && onEnter(e.currentTarget.value); // то вызвать его
     }
     const finalSpanClassName = `${css.error} ${spanClassName ? spanClassName : ""}`;
-    const finalInputClassName = error ? `${css.errorInput} ${css.superInput}` : css.superInput;
+    const finalInputClassName = error ? `${css.errorInput} ${css.inputField}` : css.inputField;
 
     return (
         <label className={css.label}>

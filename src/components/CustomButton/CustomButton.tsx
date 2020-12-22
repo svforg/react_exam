@@ -1,5 +1,5 @@
 import React, {ButtonHTMLAttributes, DetailedHTMLProps} from 'react';
-import css from "./CustomButton.module.css";
+import css from './CustomButton.module.scss';
 
 type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
 
@@ -10,7 +10,7 @@ const CustomButton: React.FC<DefaultButtonPropsType> = (
 ) => {
 
   return (
-    <button className={css.button}
+    <button className={`${css.button} ${css.button_filled}`}
       {...restProps}
     />
   );

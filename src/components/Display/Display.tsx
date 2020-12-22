@@ -1,6 +1,7 @@
 import React from 'react';
 import Output from "./../Output/Output";
 import CustomButton from "./../CustomButton/CustomButton";
+import css from "./Display.module.scss";
 
 type DisplayPropsType = {
     setIncrementDefault: () => void
@@ -20,13 +21,13 @@ export const Display: React.FC<DisplayPropsType> = (
 
     return (
         <>
-            <div className="App-inner App-output">
+            <div className={`${css.AppInner} ${css.AppOutput}`}>
                 <Output
                     error={error}
                     incrementValue={incrementValue}/>
             </div>
 
-            <div className="App-input">
+            <div className={css.AppInput}>
                 <CustomButton
                     onClick={setIncrementValueUp}
                     disabled={error}>
