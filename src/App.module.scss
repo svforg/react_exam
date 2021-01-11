@@ -1,11 +1,25 @@
-@import "./index.global.scss";
+* {
+  box-sizing: border-box;
+}
+html  {
+  font-size: 100%;
+  font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+}
+body {
+  margin: 0;
+}
+
+$colorBluePrimary: #0098EF;
+$colorDarkPrimary: #121B22;
+$borderRadius: 5px;
 
 .App {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  width: 100%;
   min-height: 100vh;
-  background: $colorDarkPrimary;
+  background: lighten($colorDarkPrimary, 10%);
 }
 
 .AppWrapper {
@@ -13,31 +27,31 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 400px;
   margin: 0 auto;
-  padding: $size16px;
+  padding: 1em;
   border: 2px solid $colorBluePrimary;
-  border-radius: 5px;
+  border-radius: $borderRadius;
 }
 
 .AppInput {
   display: flex;
   width: 100%;
-  padding: $size16px;
+  padding: 1em;
   border: 2px solid $colorBluePrimary;
-  border-radius: 5px;
+  border-radius: $borderRadius;
 }
 
 .AppInner {
   display: flex;
   justify-content: center;
   width: 100%;
+  min-width: 390px;
   min-height: 240px;
-  margin-bottom: $size16px;
-  padding: $size16px;
+  margin-bottom: 1em;
+  padding: 1em;
   color: $colorBluePrimary;
   font-weight: bold;
-  font-size: $size24px;
+  font-size: 1.5em;
   border: 2px solid $colorBluePrimary;
-  border-radius: 5px;
+  border-radius: $borderRadius;
 }

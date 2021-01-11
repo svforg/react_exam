@@ -1,0 +1,8 @@
+.AppSettings {
+  composes: AppInner from '../../../App.module.scss';
+  flex-direction: column;
+}
+
+.AppInput {
+  composes: AppInput from '../../../App.module.scss';
+}

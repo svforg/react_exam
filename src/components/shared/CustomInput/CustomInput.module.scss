@@ -1,0 +1,48 @@
+$colorBluePrimary: #0098EF;
+$colorDarkPrimary: #121B22;
+$borderRadius: 5px;
+
+$colorInputText : $colorDarkPrimary;
+
+.inputField {
+    max-width: 100px;
+    min-height: 40px;
+    padding: 0 12px;
+    color: $colorInputText;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid $colorBluePrimary;
+    border-radius: $borderRadius;
+
+    &::-webkit-input-placeholder {
+        color: $colorInputText;
+    }
+    &::-moz-placeholder {
+        color: $colorInputText;
+    }
+    &:-ms-input-placeholder {
+        color: $colorInputText;
+    }
+    &::placeholder {
+        color: $colorInputText;
+    }
+
+    &:focus {
+        color: $colorInputText;
+    }
+}
+
+.label {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.625em 0;
+}
+
+.labelTitle {
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.error {
+    color: #870000;
+}

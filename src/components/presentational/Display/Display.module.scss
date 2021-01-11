@@ -1,0 +1,11 @@
+.AppOutput {
+  composes: AppInner from '../../../App.module.scss';
+  align-items: center;
+}
+
+.AppInput {
+  composes: AppInput from '../../../App.module.scss';
+}
+.error {
+  color: #870000;
+}
